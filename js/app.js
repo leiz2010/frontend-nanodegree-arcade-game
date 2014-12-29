@@ -40,15 +40,15 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-Player.prototype.handleInput = function (keyPressed) {
-    if (keyPressed == 'left')
-        this.x -= 171/2;
-    if (keyPressed == 'right')
-        this.x += 171/2;
-    if (keyPressed == 'up')
-        this.y -= 101/2;
-    if (keyPressed == 'down')
-        this.y += 101/2;
+Player.prototype.handleInput = function (key) {
+    if (key == 'left' && this.x > 0)
+        this.x -= 101;
+    if (key == 'right' && this.x < 500)
+        this.x += 101;
+    if (key == 'up' && this.y > 0)
+        this.y -= 171/2;
+    if (key == 'down' && this.y < 600)
+        this.y += 171/2;
 
 }
 
@@ -56,9 +56,9 @@ Player.prototype.handleInput = function (keyPressed) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var enemy1 = new Enemy(100, 100);
-var enemy2 = new Enemy(200, 200);
-var enemy3 = new Enemy(300, 300);
+var enemy1 = new Enemy(100, 65);
+var enemy2 = new Enemy(100, 150);
+var enemy3 = new Enemy(100, 235);
 var allEnemies = [enemy1, enemy2, enemy3];
 var player = new Player();
 
