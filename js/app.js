@@ -15,7 +15,13 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = this.x * dt;
+
+    // if this enemy is off the screen then reset it's postion.
+    if (this.x > 600) {
+      this.x = -100;
+    }
+    this.x = this.x  + (dt * 50);
+
 }
 
 // Draw the enemy on the screen, required method for game
@@ -43,11 +49,11 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function (key) {
     if (key == 'left' && this.x > 0)
         this.x -= 101;
-    if (key == 'right' && this.x < 500)
+    if (key == 'right' && this.x < 400)
         this.x += 101;
-    if (key == 'up' && this.y > 0)
+    if (key == 'up' && this.y > 100)
         this.y -= 171/2;
-    if (key == 'down' && this.y < 600)
+    if (key == 'down' && this.y < 350)
         this.y += 171/2;
 
 }
@@ -56,9 +62,9 @@ Player.prototype.handleInput = function (key) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var enemy1 = new Enemy(100, 65);
-var enemy2 = new Enemy(100, 150);
-var enemy3 = new Enemy(100, 235);
+var enemy1 = new Enemy(-50, 65);
+var enemy2 = new Enemy(-50, 150);
+var enemy3 = new Enemy(-50, 235);
 var allEnemies = [enemy1, enemy2, enemy3];
 var player = new Player();
 
