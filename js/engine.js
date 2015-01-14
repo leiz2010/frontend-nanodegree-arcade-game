@@ -89,15 +89,15 @@ var Engine = (function(global) {
      */
     function checkCollisions() {
       allEnemies.forEach(function(enemy) {
-          // Check if the player collide with the enemy.
+          // Calculate the distance between enemy and player.
           var xDiff = Math.abs(player.x - enemy.x);
           var yDiff = Math.abs(player.y - enemy.y);
-          console.log(xDiff, yDiff);
 
+          // Check if the player collide with the enemy.
           if (xDiff < 40 && yDiff < 10) {
-            // reset player position
-            player.x = 200;
-            player.y = 400;
+            // reset player position if collide with the enemy.
+              player.x = 200;
+              player.y = 400;
           }
       });
     }
